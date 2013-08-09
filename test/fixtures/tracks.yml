@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  duration: 2013-08-09 09:24:25
+  position: 1
+  album_id: 1
+  bonus: false
+  lyrics: MyText
+
+two:
+  name: MyString
+  duration: 2013-08-09 09:24:25
+  position: 1
+  album_id: 1
+  bonus: false
+  lyrics: MyText

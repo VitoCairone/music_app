@@ -1,0 +1,31 @@
+<h1>Listing albums</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Band</th>
+    <th>Type</th>
+    <th>Year</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<!-- TODO: Solve n+1 problem in album.band.name -->
+
+<% @albums.each do |album| %>
+  <tr>
+    <td><%= album.name %></td>
+    <td><%= album.band.name %></td>
+    <td><%= album.album_type %></td>
+    <td><%= album.year %></td>
+    <td><%= link_to 'Show', album %></td>
+    <td><%= link_to 'Edit', edit_album_path(album) %></td>
+    <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Album', new_album_path %>

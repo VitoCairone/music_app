@@ -1,0 +1,29 @@
+<form action="<%= albums_path %>" method="Post">
+	<label for="album_name">Album Name</label>
+	<input type="text" name="album[name]" id="album_name" value="<%=@album.name%>">
+	<br>
+	<label for="band_name">Band Name</label>
+	<select name="album[band_id]" id="band_name">
+		<% Band.all.each do |band| %>
+		  <option value="<%= band.id %>" <%="selected" if band.id == @album.band_id %>><%= band.name %></option>
+		<% end %>
+	</select>
+	<br>
+	Album Type
+	<input type="radio" name="album[album_type]" id="album_type_studio" value="Studio" <%="checked" if @album.album_type == "Studio" %>>
+	<label for="album_type_studio">Studio</label>
+
+	<input type="radio" name="album[album_type]" id="album_type_live" value="Live" <%="checked" if @album.album_type == "Live" %>>
+	<label for="album_type_live">Live</label>
+	<br>
+	<label for="album_year">Album Year</label>
+	<select name="album[year]" id="band_name">
+		<% (Time.now.year.downto(1909)).each do |year| %>
+		  <option value="<%= year %>" <%="selected" if @album.year == year %>><%= year %></option>
+		<% end %>
+	</select>
+	<br>
+	<input type="submit" value="Add Album">
+</form>
+
+

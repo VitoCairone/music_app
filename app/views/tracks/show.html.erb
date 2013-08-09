@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @track.name %>
+</p>
+
+<p>
+  <b>Duration:</b>
+	<% second_str = "#{@track.duration.sec}".rjust(2, "0") %>
+  <%= "#{@track.duration.min}:#{second_str}" %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @track.position %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%= @track.album_id %>
+</p>
+
+<p>
+  <b>Bonus:</b>
+  <%= @track.bonus %>
+</p>
+
+<p>
+  <b>Lyrics:</b>
+  <%= @track.lyrics %>
+</p>
+
+
+<%= link_to 'Edit', edit_track_path(@track) %> |
+<%= link_to 'Back', tracks_path %>
