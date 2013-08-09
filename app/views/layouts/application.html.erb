@@ -8,6 +8,8 @@
 </head>
 <body>
 
+Logged in as: <%= @current_user.nil? ? "Nobody" : @current_user.email =%>
+
 <%= yield %>
 
 </body>

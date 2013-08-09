@@ -31,6 +31,22 @@
   <%= @track.lyrics %>
 </p>
 
+<p>
+  <b>Notes:</b>
+  <% @track.notes.each do |note| %>
+		<p><%= note.text%></p>
+	<%end%>
+</p>
+
+<form action="<%=notes_url%>" method="POST">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<input type="hidden" name="note[track_id]" value="<%=@track.id%>">
+	<input type="hidden" name="note[user_id]" value="<%=@current_user.id%>">
+	<textarea name="note[text]" id="note_text" placeholder="Enter a new note!">
+	</textarea>
+	<input type="submit" value="Submit">
+</form>
+
 
 <%= link_to 'Edit', edit_track_path(@track) %> |
 <%= link_to 'Back', tracks_path %>

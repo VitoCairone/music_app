@@ -1,4 +1,5 @@
 class TracksController < ApplicationController
+  before_filter :logged_in?
   # GET /tracks
   # GET /tracks.json
   def index

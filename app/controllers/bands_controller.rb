@@ -1,4 +1,6 @@
 class BandsController < ApplicationController
+  before_filter :logged_in?
+
   # GET /bands
   # GET /bands.json
   def index

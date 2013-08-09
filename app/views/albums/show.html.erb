@@ -20,6 +20,15 @@
   <%= @album.year %>
 </p>
 
+<p>
+	<b>Tracks</b>
+  <ol>
+	<% @album.tracks.each do |track| %>
+	  <li> <%= track.name %> </li>
+	<% end %>
+  </ol>
+</p>
+
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>

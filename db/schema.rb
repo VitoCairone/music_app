@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809171531) do
+ActiveRecord::Schema.define(:version => 20130809204411) do
 
   create_table "albums", :force => true do |t|
     t.string   "name",       :null => false
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(:version => 20130809171531) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "notes", :force => true do |t|
+    t.text     "text",       :null => false
+    t.integer  "track_id",   :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "notes", ["track_id"], :name => "index_notes_on_track_id"
+  add_index "notes", ["user_id"], :name => "index_notes_on_user_id"
+
   create_table "tracks", :force => true do |t|
     t.string   "name",                          :null => false
     t.time     "duration",                      :null => false
@@ -42,5 +53,17 @@ ActiveRecord::Schema.define(:version => 20130809171531) do
   end
 
   add_index "tracks", ["album_id"], :name => "index_tracks_on_album_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                              :null => false
+    t.string   "password_digest",                    :null => false
+    t.string   "session_token"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "admin",           :default => false
+    t.boolean  "activated",       :default => false
+  end
+
+  add_index "users", ["session_token"], :name => "index_users_on_session_token"
 
 end

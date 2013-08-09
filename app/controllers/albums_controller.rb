@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  before_filter :logged_in?
   # GET /albums
   # GET /albums.json
   def index
