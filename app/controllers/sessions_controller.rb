@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  #controls the session!
 
   def give_token
     @user.session_token = SecureRandom.urlsafe_base64(16)
