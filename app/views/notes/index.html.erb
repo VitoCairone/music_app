@@ -16,8 +16,10 @@
     <td><%= note.track_id %></td>
     <td><%= note.user_id %></td>
     <td><%= link_to 'Show', note %></td>
+		<%if @current_user.id == note.user_id || @current_user.admin%>
     <td><%= link_to 'Edit', edit_note_path(note) %></td>
     <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<%end%>
   </tr>
 <% end %>
 </table>

@@ -12,8 +12,10 @@
   <tr>
     <td><%= band.name %></td>
     <td><%= link_to 'Show', band %></td>
+		<%if @current_user.admin%>
     <td><%= link_to 'Edit', edit_band_path(band) %></td>
     <td><%= link_to 'Destroy', band, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
   </tr>
 <% end %>
 </table>

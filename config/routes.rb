@@ -1,4 +1,7 @@
 MusicApp::Application.routes.draw do
+
+  get '/users/activation', to:'users#activation'
+
   resources :users
 
   resources :notes

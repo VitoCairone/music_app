@@ -28,13 +28,21 @@
 
 <p>
   <b>Lyrics:</b>
-  <%= @track.lyrics %>
+  <%= ugly_lyrics(@track.lyrics) %>
 </p>
 
 <p>
   <b>Notes:</b>
   <% @track.notes.each do |note| %>
 		<p><%= note.text%></p>
+		<%if @current_usersid == note.user_id || @current_user.admin%>
+		<table>
+		<tr>
+    <td><%= link_to 'Edit', edit_note_path(note) %></td>
+    <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	  </table>
+		<%end%>
 	<%end%>
 </p>
 

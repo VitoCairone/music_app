@@ -43,6 +43,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
+    msg = UserMailer.activation_email(@user)
+    msg.deliver!
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -81,4 +84,16 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def activation
+    user = User.find_by_activation_token(params[:token])
+    user.activated = true
+    user.save!
+    flash[:notice] ||= []
+    flash[:notice] << "Account Activated! Please sign in."
+    redirect_to new_sessions_url
+  end
+
+
+
 end

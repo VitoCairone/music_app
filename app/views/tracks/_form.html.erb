@@ -1,6 +1,7 @@
 <!-- :album_id, :bonus, :duration, :lyrics, :name, :position -->
 
 <form action="<%= tracks_path %>" method="Post">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 	<label for="track_name">Track Name</label>
 	<input type="text" name="track[name]" id="track_name">
 	<br>
