@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   #controls the session!
 
   def give_token
@@ -25,7 +26,17 @@ class SessionsController < ApplicationController
   end
 
   def new
+    @this_is_the_login_page = true
     render :new
+  end
+
+  def destroy
+    user = current_user
+    user.session_token = SecureRandom.urlsafe_base64(16)
+    user.save!
+    session[:session_token] = nil
+
+    redirect_to new_sessions_url
   end
 
 end

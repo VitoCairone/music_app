@@ -8,7 +8,25 @@
 </head>
 <body>
 
-Logged in as: <%= @current_user.nil? ? "Nobody" : @current_user.email =%>
+<% unless @this_is_the_login_page %>
+<table><tr><td>
+<%= if @current_user.nil?
+	link_to "Login here", new_sessions_url
+	else
+	"Logged in as #{@current_user.email}"
+	end %>
+</td><td>
+	<% if !@current_user.nil? %>
+	<form action="<%=sessions_url%>" method="post">
+		<input type="hidden"
+			name="authenticity_token"
+			value="<%=form_authenticity_token%>">
+	  <input type="hidden" name="_method" value="DELETE">
+	  <input type="submit" value="Logout">
+  </form>
+  <% end %>
+</td></tr></table>
+<% end %>
 
 <%= yield %>
 
